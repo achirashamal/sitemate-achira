@@ -1,6 +1,4 @@
 // expecting time to be a string in the format like '8:15' or '12:30'
-
-
 const numberMap = {
   0: "o'clock",
   1: 'one',
@@ -36,9 +34,6 @@ const numberMap = {
 }
 
 
-
-// '12:30'
-
 function convertTimeToWords(time) {
 
   let [hrs, mins] = time.split(":")
@@ -54,35 +49,21 @@ function convertTimeToWords(time) {
     return 'midday';
   }
 
-
-
-
-  let hrsToTextNumber = (mins > 30) ?  hrs +1 : hrs;
-
-  let minsToTextNumber = (mins > 30 ) ? (60 -mins) : mins;
+  const hrsToTextNumber = (mins > 30) ?  hrs +1 : hrs;
+  const minsToTextNumber = (mins > 30 ) ? (60 -mins) : mins;
 
 
   const hrsWord = numberMap[hrsToTextNumber];
   const minsWord =  numberMap[minsToTextNumber];
 
-
-  console.log(`=================hrs ${hrsWord} mins is ${minsWord}`)
-
-
   if (mins ===0) {
     return `${hrsWord} ${minsWord}`
   }
 
-
   const middleWord =  mins <= 30 ? 'past' : 'to';
 
-  const finalWord =  `${minsWord} ${middleWord} ${hrsWord}`
 
-  // TODO: real code goes here!
-
-
-  return finalWord;
-  // return 'half past eight';
+  return `${minsWord} ${middleWord} ${hrsWord}`;
 }
 
 module.exports = { convertTimeToWords };
